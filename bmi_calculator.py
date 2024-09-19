@@ -2,7 +2,7 @@
 import streamlit as st
 
 # Display an image from a file
-st.image("GHFE1.jpg", caption="This is an image", use_column_width=True)
+st.image("GHFE1.JPG", caption="This is an image", use_column_width=True)
 
 def calculate_bmi(weight, height):
     """Calculate BMI given weight and height."""
