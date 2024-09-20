@@ -32,3 +32,20 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Data points
+x = [0, 2, 3, 4, 5, 10, 1]
+y = [0, 5, 3, 7, 4, 0, 1]
+
+# Create scatter plot with colormap
+plt.scatter(x, y, c=np.random.rand(len(x)), cmap='rainbow')
+
+# Add color bar to show the mapping of values to colors
+plt.colorbar()
+
+# Display the plot
+plt.show()
