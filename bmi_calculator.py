@@ -1,5 +1,5 @@
-#!pip install streamlit
 import streamlit as st
+import matplotlib.pyplot as plt
 
 # Display an image from a file
 st.image("GHFE1.JPG", caption="This image is not related to BMI. It is a Grey Headed Fish Eagle by the way", use_column_width=True)
@@ -8,6 +8,16 @@ def calculate_bmi(weight, height):
     """Calculate BMI given weight and height."""
     bmi = weight / (height ** 2)
     return bmi
+
+def plot_bmi(height, weight, bmi):
+    """Plot the BMI on a graph."""
+    fig, ax = plt.subplots()
+    ax.scatter(height, weight, color='blue', label=f'BMI: {bmi:.2f}')
+    ax.set_xlabel('Height (m)')
+    ax.set_ylabel('Weight (kg)')
+    ax.set_title('BMI Plot')
+    ax.legend()
+    st.pyplot(fig)
 
 def main():
     st.title("BMI Calculator")
@@ -27,25 +37,11 @@ def main():
                 st.write("You are overweight.")
             else:
                 st.write("You are obese.")
+            
+            # Plot the BMI on the graph
+            plot_bmi(height, weight, bmi)
         else:
             st.error("Height must be greater than 0.")
 
 if __name__ == "__main__":
     main()
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Data points
-x = [0, 2, 3, 4, 5, 10, 1]
-y = [0, 5, 3, 7, 4, 0, 1]
-
-# Create scatter plot with colormap
-plt.scatter(x, y, c=np.random.rand(len(x)), cmap='rainbow')
-
-# Add color bar to show the mapping of values to colors
-plt.colorbar()
-
-# Display the plot
-plt.show()
